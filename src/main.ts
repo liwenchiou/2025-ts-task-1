@@ -147,17 +147,33 @@ export const publicPlant :PublicPlant = { id: 101, name: "琴葉榕", price: 250
     - imageUrl: 字串
     - imagesUrl: 字串陣列（非必要）
 */
+type Product={
+  id: string,
+  title: string,
+  category: string,
+  description: string,
+  origin_price: number,
+  price: number,
+  is_enabled: boolean,
+  unit: string ,
+  imageUrl: string,
+  imagesUrl?: string[],
+}
 
 /*
 2️⃣ 定義 type CreateProduct
 由 Product 衍生，但不包含 id（使用 Omit）
 */
-
+type CreateProduct=Omit<Product,"id">;
 /*
+
 3️⃣ 定義 type UpdateProduct
 由 Product 衍生，id, title 必須有，其餘皆可選（使用 Partial 與 Omit）
 */
-
+type UpdateProduct={
+  id: string,
+  title: string,
+}&Partial<Omit<Product,"id"|"title">>;
 /*
 4️⃣ 實作函式 submitProduct(type, product)
 參數說明：
@@ -168,3 +184,19 @@ export const publicPlant :PublicPlant = { id: 101, name: "琴葉榕", price: 250
 create → "新增商品成功：${product.title}"
 update → "更新商品成功：${product.id}"
 */
+
+// 函式多載宣告
+// 若 type === "create"，參數型別應為 CreateProduct
+export function submitProduct(type: "create", product: CreateProduct): string;
+// 若 type === "update"，參數型別應為 UpdateProduct
+export function submitProduct(type: "update", product: UpdateProduct): string;
+
+// 實作本體
+//type 僅能是 "create" 或 "update" 且回傳一個 string
+export function submitProduct(type: "create" | "update", product: any): string {
+  if (type === "create") {
+    return `新增商品成功：${product.title}`;
+  } else {
+    return `更新商品成功：${product.id}`;
+  }
+}
