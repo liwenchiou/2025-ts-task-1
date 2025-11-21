@@ -17,9 +17,12 @@ export const cart:{sku: string, name: string, qty: number, price: number, potCol
 // 目標：理解 Enum 定義與反向映射的寫法。
 
 export enum PlantCategory {
-  
+  PlantCategory1,
+  PlantCategory2,
+  PlantCategory3,
+  PlantCategory4,
 }
-export const catKeyName: string = PlantCategory[/* TODO: 取得 LargePlant 的數值 */ 0];
+export const catKeyName: string = PlantCategory[0];
 
 
 // --- 題目三：type（& 組合） ---
