@@ -45,11 +45,12 @@ export const snakePlant:OnShelfPlant= {
 // --- 題目四：interface（extends 組合） ---
 // 說明：定義 Price 與 Shippable，PlantItem 需 extends 兩者並包含 id/name。
 // 目標：理解介面擴充多重介面的寫法。
-export interface Price { /* TODO: price: 型別; currency:"TWD"|"USD" */ }
-export interface Shippable { /* TODO: weightKg: 型別; shipFrom: 型別 */ }
-// export interface PlantItem 組合 Price, Shippable 並包含 id/name
+export interface Price { price: number; currency:"TWD"|"USD"}
+export interface Shippable {weightKg: number; shipFrom: string}
+export interface PlantItem extends Price, Shippable{ id:number,name:string}
 
-export const fiddleLeafFig /* TODO: PlantItem */ = {
+
+export const fiddleLeafFig :PlantItem  = {
   id: 101,
   name: "琴葉榕",
   price: 2500,
