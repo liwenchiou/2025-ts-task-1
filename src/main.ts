@@ -98,8 +98,8 @@ export const fetchPlants = async ():Promise<AxiosResponse<PlantDTO[]>>=> {
 // 目標：掌握 Partial/Required 的互補與回傳保證。
 export type PlantBase = { id: number; name: string; price: number; description?: string };
 
-export function updatePlant(input: /* TODO */ any): /* TODO */ any {
-  const existing: /* TODO */ any = { id: 1, name: "虎尾蘭", price: 480, description: "耐陰、淨化空氣" };
+export function updatePlant(input: Partial<PlantBase>):Required<PlantBase>{
+  const existing: PlantBase = { id: 1, name: "虎尾蘭", price: 480, description: "耐陰、淨化空氣" };
   const merged = { ...existing, ...input };
   return {
     id: merged.id,
