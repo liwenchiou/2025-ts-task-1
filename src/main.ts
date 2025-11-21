@@ -65,9 +65,9 @@ export const fiddleLeafFig :PlantItem  = {
 // 目標：以 type 定義函式型別並實作。
 export type CartItem = { price: number; qty: number };
 export type Coupon = { type: "percent" | "cash"; amount: number };
-export type CalcTotalFn = /* TODO: (參數型別) => 型別 */ any;
+export type CalcTotalFn = (items:CartItem[],coupon:Coupon) => number;
 
-export const calcTotal /* TODO: CalcTotalFn */ = (items, coupon) => {
+export const calcTotal : CalcTotalFn = (items, coupon) => {
   const subtotal = items.reduce((sum, it) => sum + it.price * it.qty, 0);
   if (!coupon) return subtotal; 
   if (coupon.type === "percent") return Math.max(0, Math.round(subtotal * (1 - coupon.amount / 100)));
