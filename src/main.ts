@@ -79,7 +79,7 @@ export const calcTotal : CalcTotalFn = (items, coupon) => {
 // 說明：import axios 與 AxiosResponse，定義 PlantDTO，實作 fetchPlants。
 // API: https://fakestoreapi.com/products
 // 目標：理解泛型定義與應用。
-import axios from 'axios'; /* TODO */
+import axios,{AxiosResponse} from 'axios';
 export type PlantDTO = { 
   id: number; 
   title: string; 
@@ -87,7 +87,7 @@ export type PlantDTO = {
   category: string; 
 };
 
-export const fetchPlants = async () /* TODO */ => {
+export const fetchPlants = async ():Promise<AxiosResponse<PlantDTO[]>>=> {
   return axios.get('https://fakestoreapi.com/products');
 }
 
