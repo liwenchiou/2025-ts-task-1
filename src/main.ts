@@ -125,11 +125,11 @@ export const inventory:Inventory = {
 // 需求：
 // 1) CartPlant：只需 id/name/price
 // 2) PublicPlant：移除重量與出貨地
-export type CartPlant = /* TODO */ any;
-export type PublicPlant = /* TODO */ any;
+export type CartPlant = Pick<PlantItem,"id"|"name"|"price">;
+export type PublicPlant = Omit<PlantItem,"weightKg"|"shipFrom">;
 
-export const cartPlant /* TODO */ = { id: 101, name: "琴葉榕", price: 2500 };
-export const publicPlant /* TODO */ = { id: 101, name: "琴葉榕", price: 2500, currency: "TWD" };
+export const cartPlant :CartPlant = { id: 101, name: "琴葉榕", price: 2500 };
+export const publicPlant :PublicPlant = { id: 101, name: "琴葉榕", price: 2500, currency: "TWD" };
 
 
 // --- 題目十：綜合練習 ---
