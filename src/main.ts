@@ -29,11 +29,11 @@ export const catKeyName: string = PlantCategory[0];
 // 說明：請用 type 定義 BasicPlant 與 StockInfo，再用 & 組合為 OnShelfPlant，建立範例變數。
 // 目標：理解 type 宣告與交叉型別的寫法。
 
-export type BasicPlant = /* TODO: { id: 型別; name: 型別; price: 型別 } */ any;
-export type StockInfo = /* TODO: { sku: 型別; quantity: 型別 } */ any;
-export type OnShelfPlant = /* TODO: BasicPlant, StockInfo 組合 */ any;
+export type BasicPlant = { id: number; name: string; price: number };
+export type StockInfo = { sku: string; quantity: number };
+export type OnShelfPlant =BasicPlant&StockInfo;
 
-export const snakePlant /* TODO: OnShelfPlant */ = {
+export const snakePlant:OnShelfPlant= {
   id: 2,
   name: "虎尾蘭",
   price: 480,
